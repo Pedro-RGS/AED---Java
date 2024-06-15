@@ -1,36 +1,44 @@
 package org.AED.Pilhas;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Arrays;
 
-public class Pilha<T> {
-    private int topo;
-    private int tamanho;
-    private List<T> valores;
+public class Pilha {
 
-    public Pilha(int tamanho){
-        this.topo = -1;
+    public int tamanho;
+    public int[] array;
+    public int topo;
+
+    public Pilha(int tamanho) {
         this.tamanho = tamanho;
-        valores = new ArrayList<>();
+        this.topo = -1;
+        this.array = new int[tamanho];
     }
 
-    public void push(T valor){
-        if(topo < tamanho - 1){
-            valores.add(topo + 1, valor);
+    public void push(int elemento){
+        if (this.topo < this.tamanho){
             topo++;
+            array[topo] = elemento;
         }
         else {
-            throw new TransbordamentoException();
+            throw new OverflowException();
         }
     }
 
-    public T pop(){
-        if(topo > -1) {
-            topo--;
-            return valores.get(topo + 1);
+    public int pop(){
+        if (topo >= 0){
+            return array[topo--];
         }
         else {
             throw new UnderFlowException();
         }
+    }
+
+    @Override
+    public String toString() {
+        return "Pilha{" +
+                "tamanho=" + tamanho +
+                ", array=" + Arrays.toString(array) +
+                ", topo=" + topo +
+                '}';
     }
 }

@@ -1,27 +1,30 @@
 package org.AED.ListaLigada;
 
 public class Elemento {
-    private int valor;
+    private final int valor;
     private Elemento proximo;
 
-    public int getValor() {
-        return valor;
-    }
-
-    public void setValor(int valor) {
+    public Elemento (int valor){
         this.valor = valor;
     }
 
-    public Elemento getProximo() {
-        return proximo;
+    public int getValor(){
+        return this.valor;
     }
 
-    public void setProximo(Elemento proximo) {
-        this.proximo = proximo;
+    public void setProximo(Elemento e){
+        this.proximo = e;
     }
 
-    Elemento (int valor){
-        this.valor = valor;
-        this.proximo = null;
+    public Elemento getProximo(){
+        return this.proximo;
+    }
+
+    @Override
+    public String toString() {
+        return "Elemento{" +
+                "valor=" + valor +
+                ", proximo=" + proximo +
+                '}';
     }
 }
